@@ -50,7 +50,7 @@ class persona {//clase constructor
         this.carrera = carrera;
 
         // agregamos uid - con esto  ponemos id aleatorios y se reemplazaria por dataSet-correo y en el evento click
-        //this.uid = `${Date.now()}`;
+        this.uid = `${Date.now()}`;
     }
 
     //ahora un metodo para pintar la información
@@ -80,13 +80,13 @@ class persona {//clase constructor
 document.addEventListener("click", (e) =>{// delegacion de eventos para botenes aprobar y reprobar
     //console.log(e.target);//prueba de donde hacemos click y que trae.
 
-    console.log(e.target.dataset.correo);//aquí seleccionamos el estudiante especifico por el correo otro modo seria tomarlos por el id del estudiante o docente registrado.
+    console.log(e.target.dataset.uid);//aquí seleccionamos el estudiante especifico por el uid otro modo seria tomarlos por el id del estudiante o docente registrado.
 
-    if(e.target.dataset.correo){//aca modificaremos el estado del estudiante selccionado por el correo
+    if(e.target.dataset.uid){//aca modificaremos el estado del estudiante selccionado por el uid
         //console.log(e.target.matches('.btn-success')); //prueba si se dio click en el boton aprobar de un estudiante
         if(e.target.matches('.btn-success')){//si da click en el boton aprobado del estudiante
             estudiantes.map(item => {//recorremos el array estudiantes 
-                if(item.correo === e.target.dataset.correo){
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = true//setEstado es el que modifica el estado
                 }
                 return item
@@ -96,7 +96,7 @@ document.addEventListener("click", (e) =>{// delegacion de eventos para botenes 
 
         if(e.target.matches('.btn-danger')){//si da click en el boton aprobado del estudiante
             estudiantes.map(item => {//recorremos el array estudiantes 
-                if(item.correo === e.target.dataset.correo){
+                if(item.uid === e.target.dataset.uid){
                     item.setEstado = false//setEstado es el que modifica el estado
                 }
                 return item
@@ -128,7 +128,7 @@ class Estudiante extends persona{
         clone.querySelector('h5').textContent = this.getEstudiante;
         clone.querySelector('h7').textContent = "Carrera: "+ this.carrera;
         clone.querySelector('p').textContent = "Edad: "+ this.edad;
-        clone.querySelector('h6').textContent = this.correo;
+        clone.querySelector('h6').textContent = "Correo: "+ this.correo;
         
         if(this.#estado){//botones de aprobar y reprobar
             //con (.className) reemplazamos todas las clases que hay en esa clase saelecionada
@@ -144,8 +144,8 @@ class Estudiante extends persona{
         clone.querySelector('.badge').textContent = this.#estado ? "Aprobado" : "Reprobado" //para cabiar el texte dependiendo si del estado si es true = aprobado o false = Reprobado (aca afuera queda dinamico para no hacerlos en el if y el else)
 
         //agregamos data set de forma dinamica para tomar los botones de los estudiante y dar click en aprobar o reprobar
-        clone.querySelector('.btn-success').dataset.correo = this.correo;
-        clone.querySelector('.btn-danger').dataset.correo = this.correo; 
+        clone.querySelector('.btn-success').dataset.uid = this.uid;
+        clone.querySelector('.btn-danger').dataset.uid = this.uid; 
 
         return clone;
     }
@@ -162,7 +162,7 @@ class Profesor extends persona {
         clone.querySelector('h5').textContent = this.#profesor;
         clone.querySelector('h7').textContent = "Carrera: "+ this.carrera;
         clone.querySelector('p').textContent = "Edad: "+ this.edad;
-        clone.querySelector('h6').textContent = this.correo;
+        clone.querySelector('h6').textContent = "Correo: "+ this.correo;
         
 
         return clone;

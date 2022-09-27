@@ -18,9 +18,7 @@
 <body>
     <header class="header2">
         <h1 id="inicio1">Estudiantes y profesores </h1>
-       
-      
-      </header>
+    </header>
 
  <div class="container my-5">
     <!-- alerta en caso de falla -->
@@ -30,13 +28,13 @@
     
     <form id="formulario" method="post">
         <label for="">Nombre</label>
-        <input type="text"  pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" class="form-control mb-2" name="nombre" placeholder="Ingrese nombre"/>
+        <input type="text" required pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" class="form-control mb-2" name="nombre" placeholder="Ingrese nombre"/>
         <label for="" >Edad</label>
-        <input type="number"  class="form-control mb-2" name="edad" placeholder="Ingrese edad"/>
+        <input type="number" required class="form-control mb-2" name="edad" placeholder="Ingrese edad"/>
         <label for="" >Correo Electronico</label>
-        <input type="text"  class="form-control mb-2" name="correo" placeholder="Ingrese su correo electronico"/>
+        <input type="text" required class="form-control mb-2" name="correo" placeholder="Ingrese su correo electronico"/>
         <label for="" >Carrera</label>
-        <input type="text" class="form-control mb-2" name="carrera" placeholder="Ingrese la carrera"/> 
+        <input type="text" required class="form-control mb-2" name="carrera" placeholder="Ingrese la carrera"/> 
        
 
         <select class="form-select" aria-label="Default select example" name="opcion">
